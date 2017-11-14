@@ -21,11 +21,14 @@ export default class WorldMap extends React.Component {
     super(props)
     this.state = {
       markers: [],
-      opacity: 1
+      opacity: 0
     }
   }
 
   componentDidMount (){
+    this.setState({
+      opacity: 1
+    })
   }
 
   onMove = (deltaX) => {
@@ -38,6 +41,7 @@ export default class WorldMap extends React.Component {
     this.setState({
       markers: newMarkers
     })
+    this.props.isMoving()
   }
 
   imageLoaded = (scaleFactor) => {
@@ -46,6 +50,14 @@ export default class WorldMap extends React.Component {
         {
           offsetX: -650 * scaleFactor,
           offsetY: 450 * scaleFactor
+        },
+        {
+          offsetX: 220 * scaleFactor,
+          offsetY: 330 * scaleFactor
+        },
+        {
+          offsetX: 10 * scaleFactor,
+          offsetY: 300 * scaleFactor
         }
       ]
     })
@@ -60,7 +72,7 @@ export default class WorldMap extends React.Component {
   render() {
     return (
       <StyledMapWrapper opacity={this.state.opacity}>
-        <StyledCanvasMap id="map" resize="true"/>
+        <StyledCanvasMap id="map" data-paper-resize="true"/>
         <PaperScope 
           canvasId='map'>
           <ContainedImage 

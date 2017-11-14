@@ -42,13 +42,27 @@ export default class ContainedImage extends React.Component {
   }
 
   onClick = (event) => {
+    console.log("click")
     this.props.onClick()
     const initialCenter = Paper.view.center;
     animateViewChange(new Point(this.state.x, this.state.y), 4, 200)
       .then( () => {
+        window.location.href = `http://${window.location.host}/country`
         Paper.view.center = initialCenter;
         Paper.view.zoom = 1;
       })
+  }
+
+  onMouseEnter = () => {
+    this.setState({
+      scaleFactor: 1.2
+    })
+  }
+
+  onMouseLeave = () => {
+    this.setState({
+      scaleFactor: 0.83334
+    })
   }
 
   render() {
@@ -59,6 +73,8 @@ export default class ContainedImage extends React.Component {
         scaleFactor={this.state.scaleFactor}
         rotation={this.state.rotation}
         onClick={this.onClick}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
         x={this.state.x} y={this.state.y}/>);
   }
 }
