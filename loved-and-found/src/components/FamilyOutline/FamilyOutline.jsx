@@ -10,6 +10,8 @@ import StyledSectionHeader, {StyledH2} from '../Introduction/StyledHeader'
 import StyledSectionContent from '../coffeeDetails/StyledSectionContent'
 import StyledOrderButton from '../coffeeDetails/StyledOrderButton'
 
+import ReactGA from 'react-ga'
+
 export default class FamilyOutline extends React.Component {
   constructor(props) {
     super(props)
@@ -23,6 +25,10 @@ export default class FamilyOutline extends React.Component {
   }
 
   order() {
+    ReactGA.event({
+      category: 'Bottom-Order',
+      action: `of coffee ${this.props.name}`
+    });
     window.location.href = `http://${window.location.host}/order`
   }
 

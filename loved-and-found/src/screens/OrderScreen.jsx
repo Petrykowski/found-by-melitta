@@ -14,6 +14,8 @@ import StyledOrderButton from '../components/Order/StyledOrderButton'
 
 import Heart from '../components/Header/heart.svg'
 
+import ReactGA from 'react-ga'
+
 class OrderScreen extends Component {
 
   constructor(props) {
@@ -24,12 +26,19 @@ class OrderScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    ReactGA.pageview(`/order`);
+  }
+
   subscribe(event) {
-    event.preventDefault();
-    console.log("")
+    ReactGA.event({
+      category: 'Registration',
+      action: `${this.state.email.split('@')}`
+    });
     this.setState({
       subscribed: true
     })
+    event.preventDefault();
   }
 
   onChange(event) {

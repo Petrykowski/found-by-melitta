@@ -7,12 +7,18 @@ import StyledSectionImageWrapper from './StyledSectionImageWrapper'
 import StyledDetails from './StyledDetails'
 import StyledOrderButton from './StyledOrderButton'
 
+import ReactGA from 'react-ga'
+
 export default class CoffeeDetails extends React.Component {
   constructor(props){
     super(props)
   }
 
   order() {
+    ReactGA.event({
+      category: 'Top-Order',
+      action: `of coffee ${this.props.name}`
+    });
     window.location.href = `http://${window.location.host}/order`
   }
 

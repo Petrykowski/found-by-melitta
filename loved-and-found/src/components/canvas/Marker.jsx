@@ -6,7 +6,7 @@ import Paper, { Raster, Size, Point } from 'paper';
 import Image from '../paper-react/components/Image.jsx';
 
 import Marker from '../Marker/marker.svg'
-
+import ReactGA from 'react-ga';
 
 const ACTIVE_SCALE = 1.2;
 const INACTIVE_SCALE = 0.83334;
@@ -60,7 +60,10 @@ export default class ContainedImage extends React.Component {
   onClick = (event) => {
     this.props.onClick()
     const initialCenter = Paper.view.center;
-    setTimeout( () => {}, 2000)
+    ReactGA.event({
+      category: 'User',
+      action: `selected location ${this.props.id}`
+    });
     animateViewChange(new Point(this.state.x, this.state.y), 4, 150)
     .then( () => {
         Paper.view.center = initialCenter;

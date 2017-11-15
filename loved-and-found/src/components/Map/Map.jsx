@@ -15,6 +15,7 @@ import Paper, { Point, Tool, Rectangle } from 'paper';
 
 //assets
 import Map from './map.png';
+import config from '../../config.js'
 
 export default class WorldMap extends React.Component {
   constructor(props){
@@ -46,26 +47,13 @@ export default class WorldMap extends React.Component {
 
   imageLoaded = (scaleFactor) => {
     this.setState({
-      markers: [
-        {
-          offsetX: -650 * scaleFactor,
-          offsetY: 450 * scaleFactor,
-          active: true,
-          id: 1,
-        },
-        {
-          offsetX: 220 * scaleFactor,
-          offsetY: 330 * scaleFactor,
-          active: false,
-          id: 2,
-        },
-        {
-          offsetX: 10 * scaleFactor,
-          offsetY: 300 * scaleFactor,
-          active: false,
-          id: 3,
+      markers: config.markers.map((marker) => {
+        return {
+          ...marker,
+          offsetX: marker.offsetX * scaleFactor,
+          offsetY: marker.offsetY * scaleFactor,
         }
-      ]
+      })
     })
   }
 

@@ -42,5 +42,28 @@ export default {
         }
       ]
     },
-  ]
+  ],
+  markers: [
+    {
+      offsetX: -650,
+      offsetY: 450,
+      active: true,
+      id: 0,
+    },
+    {
+      offsetX: 220,
+      offsetY: 330,
+      active: false,
+      id: 1,
+    },
+    {
+      offsetX: 10,
+      offsetY: 300,
+      active: false,
+      id: 2,
+    }
+  ],
+  logging: {
+    subscribeUrl: 'http://get'
+  }
 }
