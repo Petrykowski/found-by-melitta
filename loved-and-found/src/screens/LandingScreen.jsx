@@ -6,6 +6,8 @@ import Header from '../components/Header/Header.jsx'
 import Introduction from '../components/Introduction/Introduction.jsx'
 import CountryButtons from '../components/CountryButton/CountryButtons.jsx'
 
+import { Route, Redirect } from 'react-router'
+
 class LandingScreen extends Component {
 
   constructor(props) {

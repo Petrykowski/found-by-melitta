@@ -8,10 +8,12 @@ import StyledDetails from './StyledDetails'
 import StyledOrderButton from './StyledOrderButton'
 
 import ReactGA from 'react-ga'
+import { Redirect } from 'react-router'
 
 export default class CoffeeDetails extends React.Component {
   constructor(props){
     super(props)
+    this.state = {}
   }
 
   order() {
@@ -19,12 +21,19 @@ export default class CoffeeDetails extends React.Component {
       category: 'Top-Order',
       action: `of coffee ${this.props.name}`
     });
-    window.location.href = `http://${window.location.host}/order`
+    this.setState({
+      route: '/order'
+    })
   }
 
   render(){
     return (
       <StyledDetails>
+        {
+          this.state.route
+          ? <Redirect to={this.state.route}/>
+          : null
+        }
         <h1>{this.props.name}</h1>
         <StyledSectionImageWrapper>
           <StyledSectionImage src={this.props.image}/>
