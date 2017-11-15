@@ -42,8 +42,8 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={LandingScreen}/>
-          <Route exact path="/country/:countryId" component={CountryScreen}/>
-          <Route exact path="/order" component={OrderScreen}/>
+          <Route path="/country/:countryId" component={CountryScreen}/>
+          <Route path="/order" component={OrderScreen}/>
         </div>
       </Router>
       </ThemeProvider>
