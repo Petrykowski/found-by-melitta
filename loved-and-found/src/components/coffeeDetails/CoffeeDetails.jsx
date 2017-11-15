@@ -10,7 +10,6 @@ import StyledOrderButton from './StyledOrderButton'
 export default class CoffeeDetails extends React.Component {
   constructor(props){
     super(props)
-    console.log(props)
   }
 
   order() {
