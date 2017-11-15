@@ -12,11 +12,15 @@ export default class Header extends React.Component {
     super(props)
   }
 
+  navigateBack() {
+    window.location.href = `http://${window.location.host}/`;
+  }
+
   render(){
     return (
     <StyledHeader>
-      <StyledIcon src={HeartIcon}/>
-      <TextWrapper>
+      <StyledIcon src={HeartIcon} onClick={() => this.navigateBack()}/>
+      <TextWrapper onClick={() => this.navigateBack()}>
         <StyledText>Loved and Found</StyledText>
       </TextWrapper>
     </StyledHeader>

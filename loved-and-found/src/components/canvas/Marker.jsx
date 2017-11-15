@@ -7,6 +7,10 @@ import Image from '../paper-react/components/Image.jsx';
 
 import Marker from '../Marker/marker.svg'
 
+
+const ACTIVE_SCALE = 1.2;
+const INACTIVE_SCALE = 0.83334;
+
 /**
  * Image that that is spread as large as possible.
  */
@@ -22,17 +26,29 @@ export default class ContainedImage extends React.Component {
     };
   }
 
+  getScaleFactor(props) {
+    if(props.active){
+      return ACTIVE_SCALE
+    }else{
+      if(this.state.scaleFactor){
+        return INACTIVE_SCALE
+      }
+    }
+  }
+
   componentDidMount() {
     this.setState({
       x: Paper.view.center.x + this.props.offsetX,
-      y: Paper.view.center.y + this.props.offsetY
+      y: Paper.view.center.y + this.props.offsetY,
+      scaleFactor: this.getScaleFactor(this.props)
     });
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       x: Paper.view.center.x + nextProps.offsetX,
-      y: Paper.view.center.y + nextProps.offsetY
+      y: Paper.view.center.y + nextProps.offsetY,
+      scaleFactor: this.getScaleFactor(nextProps)
     });
   }
   
@@ -42,27 +58,25 @@ export default class ContainedImage extends React.Component {
   }
 
   onClick = (event) => {
-    console.log("click")
     this.props.onClick()
     const initialCenter = Paper.view.center;
-    animateViewChange(new Point(this.state.x, this.state.y), 4, 200)
-      .then( () => {
-        window.location.href = `http://${window.location.host}/country`
+    setTimeout( () => {}, 2000)
+    animateViewChange(new Point(this.state.x, this.state.y), 4, 150)
+    .then( () => {
         Paper.view.center = initialCenter;
         Paper.view.zoom = 1;
+        window.location.href = `http://${window.location.host}/country/${this.props.id}`
       })
   }
 
   onMouseEnter = () => {
     this.setState({
-      scaleFactor: 1.2
+      scaleFactor: ACTIVE_SCALE
     })
+    this.props.onHover();
   }
 
   onMouseLeave = () => {
-    this.setState({
-      scaleFactor: 0.83334
-    })
   }
 
   render() {
@@ -81,7 +95,8 @@ export default class ContainedImage extends React.Component {
 
 ContainedImage.propTypes = {
   offsetX: PropTypes.number,
-  offsetY: PropTypes.number
+  offsetY: PropTypes.number,
+  active: PropTypes.bool
 };
 
 

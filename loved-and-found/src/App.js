@@ -13,6 +13,7 @@ import './App.css';
 //Components
 import LandingScreen from './screens/LandingScreen'
 import CountryScreen from './screens/CountryScreen'
+import OrderScreen from './screens/OrderScreen'
 
 class App extends Component {
 
@@ -41,7 +42,8 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={LandingScreen}/>
-          <Route exact path="/country" component={CountryScreen}/>
+          <Route exact path="/country/:countryId" component={CountryScreen}/>
+          <Route exact path="/order" component={OrderScreen}/>
         </div>
       </Router>
       </ThemeProvider>

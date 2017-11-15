@@ -49,15 +49,21 @@ export default class WorldMap extends React.Component {
       markers: [
         {
           offsetX: -650 * scaleFactor,
-          offsetY: 450 * scaleFactor
+          offsetY: 450 * scaleFactor,
+          active: true,
+          id: 1,
         },
         {
           offsetX: 220 * scaleFactor,
-          offsetY: 330 * scaleFactor
+          offsetY: 330 * scaleFactor,
+          active: false,
+          id: 2,
         },
         {
           offsetX: 10 * scaleFactor,
-          offsetY: 300 * scaleFactor
+          offsetY: 300 * scaleFactor,
+          active: false,
+          id: 3,
         }
       ]
     })
@@ -66,6 +72,14 @@ export default class WorldMap extends React.Component {
   onMarkerClicked() {
     this.setState({
       opacity: 0
+    })
+  }
+
+  onMarkerHovered(index) {
+    let newMarkers = this.state.markers.map( (marker) => ({...marker, active: false}) )
+    newMarkers[index].active = true
+    this.setState({
+      markers: newMarkers
     })
   }
 
@@ -82,7 +96,7 @@ export default class WorldMap extends React.Component {
           />
           {
             this.state.markers.map( (markerProps, index) => {
-              return <Marker key={index} {...markerProps} onClick={ () => this.onMarkerClicked(index)}/>
+              return <Marker key={index} {...markerProps} onHover={() => this.onMarkerHovered(index)} onClick={ () => this.onMarkerClicked(index)}/>
             })
           }
         </PaperScope> 
