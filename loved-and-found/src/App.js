@@ -42,7 +42,6 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={LandingScreen}/>
-          <Route exact path="/found-by-melitta/" component={LandingScreen}/>
           <Route path="/country/:countryId" component={CountryScreen}/>
           <Route path="/order" component={OrderScreen}/>
         </div>
