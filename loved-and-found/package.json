@@ -2,7 +2,7 @@
   "name": "marketplace",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://petrykowski.github.io/found-by-melitta/",
+  "homepage": "http://lovedandfound.com",
   "dependencies": {
     "exif-js": "^2.3.0",
     "mapbox-gl": "^0.41.0",
