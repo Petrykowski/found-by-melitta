@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Exif from 'exif-js';
 
 // Paper JS
 import Paper, { Raster, Size } from 'paper';
@@ -37,22 +36,16 @@ export default class ContainedImage extends React.Component {
     this.imageElement = raster;
     const imageSize = raster.size;
 
-    this.orientationOfImage(raster)
-      .then( (orientation: number) => {
-        let scalingSize = imageSize.clone();
-        if (orientation === 6 || orientation === 8){
-          scalingSize = new Size(scalingSize.height,scalingSize.width);
-        };
-        
-        const scaleFactor = this.computeScaleFactor(Paper.view.viewSize, scalingSize);
-        const offset = Paper.view.viewSize.subtract(scalingSize.multiply(scaleFactor)).divide(2);
 
-        this.setState({
-          scaleFactor: scaleFactor,
-          rotation: ORIENTATION_ROTATION_MAP[orientation]
-        });
-        this.props.onLoad(scaleFactor);
-      });
+    let scalingSize = imageSize.clone();
+
+    const scaleFactor = this.computeScaleFactor(Paper.view.viewSize, scalingSize);
+    const offset = Paper.view.viewSize.subtract(scalingSize.multiply(scaleFactor)).divide(2);
+
+    this.setState({
+      scaleFactor: scaleFactor,
+    });
+    this.props.onLoad(scaleFactor);
   }
 
   computeScaleFactor = (viewSize: Size, scalingSize: Size) : Number => {
@@ -64,16 +57,10 @@ export default class ContainedImage extends React.Component {
   // 6 - Upright (hochkant)
   // 8 - Lengthways (längs)
   // 3 - Upsidedown
-  orientationOfImage(raster: Raster) : Number {
-    return new Promise( (resolve, reject) => {
-      Exif.getData(raster.image, function() {
-        resolve(Exif.getTag(raster.image, 'Orientation'));
-      });
-    });
-  }
 
   onMouseDown(event) {
   }
+
   onMouseDrag = (event) => {    
     let overlap = Paper.view.size.width - this.imageElement.bounds.size.width
     let minX = Paper.view.center.x - Math.abs(overlap / 2)
