@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 import StyledFamilyOutline from './StyledFamilyOutline'
 import StyledFamilyImage from './StyledFamilyImage'
@@ -9,7 +10,6 @@ import StyledSectionImageWrapper from '../coffeeDetails/StyledSectionImageWrappe
 import StyledSectionHeader, {StyledH2} from '../Introduction/StyledHeader'
 import StyledSectionContent from '../coffeeDetails/StyledSectionContent'
 import StyledOrderButton from '../coffeeDetails/StyledOrderButton'
-import { Redirect } from 'react-router'
 
 import ReactGA from 'react-ga'
 
@@ -30,19 +30,12 @@ export default class FamilyOutline extends React.Component {
       category: 'Bottom-Order',
       action: `of coffee ${this.props.name}`
     });
-    this.setState({
-      route: '/order'
-    })
+    this.context.changeRoute('order')
   }
 
   render() {
     return (
       <StyledFamilyOutline>
-        {
-          this.state.route ? 
-           <Redirect to={this.state.route}/>
-           : null
-        }
           <StyledSectionImageWrapper>
             <StyledDescription>
               <StyledFamilyImage src={this.state.image} />
@@ -60,3 +53,7 @@ export default class FamilyOutline extends React.Component {
   }
 
 }
+
+FamilyOutline.contextTypes = {
+  changeRoute: PropTypes.func
+};

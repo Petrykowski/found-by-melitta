@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import StyledSectionHeader from './StyledSectionHeader'
 import StyledSectionContent from './StyledSectionContent'
@@ -8,7 +9,6 @@ import StyledDetails from './StyledDetails'
 import StyledOrderButton from './StyledOrderButton'
 
 import ReactGA from 'react-ga'
-import { Redirect } from 'react-router'
 
 export default class CoffeeDetails extends React.Component {
   constructor(props){
@@ -21,19 +21,12 @@ export default class CoffeeDetails extends React.Component {
       category: 'Top-Order',
       action: `of coffee ${this.props.name}`
     });
-    this.setState({
-      route: '/order'
-    })
+    this.context.changeRoute('order')
   }
 
   render(){
     return (
       <StyledDetails>
-        {
-          this.state.route
-          ? <Redirect to={this.state.route}/>
-          : null
-        }
         <h1>{this.props.name}</h1>
         <StyledSectionImageWrapper>
           <StyledSectionImage src={this.props.image}/>
@@ -50,3 +43,7 @@ export default class CoffeeDetails extends React.Component {
     )
   }
 }
+
+CoffeeDetails.contextTypes = {
+  changeRoute: PropTypes.func
+};

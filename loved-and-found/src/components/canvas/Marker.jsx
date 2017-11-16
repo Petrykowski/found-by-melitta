@@ -7,7 +7,6 @@ import Image from '../paper-react/components/Image.jsx';
 
 import Marker from '../Marker/marker.svg'
 import ReactGA from 'react-ga';
-import { Redirect } from 'react-router'
 
 const ACTIVE_SCALE = 1.2;
 const INACTIVE_SCALE = 0.83334;
@@ -69,9 +68,7 @@ export default class ContainedImage extends React.Component {
     .then( () => {
         Paper.view.center = initialCenter;
         Paper.view.zoom = 1;
-        this.setState({
-          route: `/country/${this.props.id}`
-        })
+        this.context.changeRoute(`country`, {id: this.props.id});
       })
   }
 
@@ -88,11 +85,6 @@ export default class ContainedImage extends React.Component {
   render() {
     return (
       <div>
-      {
-        this.state.route ? 
-        <Redirect to={this.state.route}/>
-        : null
-      }
       <Image 
         src={Marker} 
         onLoad={this.onLoad}
@@ -105,6 +97,10 @@ export default class ContainedImage extends React.Component {
       </div>);
   }
 }
+
+ContainedImage.contextTypes = {
+  changeRoute: PropTypes.func
+};
 
 ContainedImage.propTypes = {
   offsetX: PropTypes.number,

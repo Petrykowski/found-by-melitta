@@ -13,8 +13,8 @@ class CountryScreen extends Component {
 
   constructor(props) {
     super(props)
-    let pathSplit = window.location.pathname.split('/')
-    this.countryId = parseInt( pathSplit[pathSplit.length - 1] )
+    
+    this.countryId = this.props.id
     this.state = config.coffees[this.countryId];
   }
 
