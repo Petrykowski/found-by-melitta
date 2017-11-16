@@ -14,7 +14,7 @@ import Marker from '../canvas/Marker'
 import Paper, { Point, Tool, Rectangle } from 'paper';
 
 //assets
-import Map from './map.jpg';
+import Map from './map.png';
 import config from '../../config.js'
 
 export default class WorldMap extends React.Component {
