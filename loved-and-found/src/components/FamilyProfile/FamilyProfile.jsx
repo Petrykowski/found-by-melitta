@@ -6,6 +6,7 @@ import TableRow from './TableRow'
 import TableCell from './TableCell'
 import StyledPin from './StyledPin'
 
+import Pin from './Pin.svg'
 
 export default class FamiliyProfile extends React.Component {
 
@@ -13,7 +14,7 @@ export default class FamiliyProfile extends React.Component {
     return (
       <StyledFamilyProfile>
         <SectionWrapper>
-          <StyledPin src={'/pin.svg'}></StyledPin>
+          <StyledPin src={Pin}></StyledPin>
         </SectionWrapper>
         <SectionWrapper>
         <h2>{this.props.name}</h2>
