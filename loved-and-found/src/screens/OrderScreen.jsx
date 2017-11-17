@@ -29,6 +29,7 @@ class OrderScreen extends Component {
 
   componentDidMount() {
     ReactGA.pageview(`/order`);
+    logPageview()
   }
 
   subscribe(event) {
@@ -36,7 +37,7 @@ class OrderScreen extends Component {
       category: 'Registration',
       action: `${this.state.email.split('@')}`
     });
-    logPageview()
+    
     this.logSubscription(this.state.email)
     this.setState({
       subscribed: true
@@ -46,7 +47,7 @@ class OrderScreen extends Component {
   }
 
   logSubscription(email) {
-    let url = "https://rare-market.coffee/mail/" + document.location.hostname + '/' + window.location.pathname.replace(/\//g, '%2F') + '/' + window.token.replace(/\//g, '%2F') + '/' + email
+    let url = "https://rare-market.coffee/mail/" + document.location.hostname + '/' + window.location.hash.replace('#', '').replace(/\//g, '%2F') + '/' + window.token.replace(/\//g, '%2F') + '/' + email
     fetch(url)
   }
 
