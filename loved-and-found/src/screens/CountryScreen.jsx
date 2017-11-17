@@ -25,10 +25,10 @@ class CountryScreen extends Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header color={'white'}/>
+        <FamilyOutline families={this.state.families} name={this.state.name}/>
       <StyledCountryScreen>
         <CoffeeDetails {...this.state}/>
-        <FamilyOutline families={this.state.families} name={this.state.name}/>
       </StyledCountryScreen>
       </div>
     );

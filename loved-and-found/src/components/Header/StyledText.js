@@ -10,8 +10,9 @@ const StyledText = styled.div`
   font-family: 'Spectral SC', serif;
   height: 2rem;
   margin-top: 0.5rem;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid ${props => props.color};
+  border-bottom: 1px solid ${props => props.color};
+  color: ${props => props.color};
 
   ${media.desktop`
 

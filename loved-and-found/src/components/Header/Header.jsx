@@ -20,10 +20,14 @@ export default class Header extends React.Component {
     return (
     <StyledHeader>
       <StyledIcon src={HeartIcon} onClick={() => this.navigateBack()}/>
-      <TextWrapper onClick={() => this.navigateBack()}>
-        <StyledText>Loved and Found</StyledText>
+      <TextWrapper color={this.props.color} onClick={() => this.navigateBack()}>
+        <StyledText color={this.props.color}>Loved and Found</StyledText>
       </TextWrapper>
     </StyledHeader>
     )
   }
+}
+
+Header.defaultProps ={
+  color: 'black'
 }

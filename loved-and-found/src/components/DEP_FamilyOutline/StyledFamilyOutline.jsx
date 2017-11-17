@@ -3,13 +3,14 @@ import { media } from './../../mediaStyles.js';
 
 
 const StyledFamilyOutline = styled.div`
-  height: calc( 100% - 3rem);
+  height: auto;
   width: 100%;
-  position: relative;
-  z-index: 1;
+  background-color: 'blue';
+  padding: 1rem;
   
   ${media.desktop`
-    width: 100%;
+    padding-top: 1.67rem;
+    width: 60%;
   `};
 };
 `;

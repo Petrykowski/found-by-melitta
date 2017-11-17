@@ -4,13 +4,12 @@ import { media } from './../../mediaStyles.js';
 
 const StyledCoffeeDetails = styled.div`
   height: auto;
-  padding: 1rem;
   width: 100%;
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
+  background-color: ${props => props.theme.colors.third};
   
   ${media.desktop`
-    width: 40%;
   `};
 };
 `;

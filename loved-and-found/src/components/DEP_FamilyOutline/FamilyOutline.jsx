@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 
 import StyledFamilyOutline from './StyledFamilyOutline'
 import StyledFamilyImage from './StyledFamilyImage'
-import StyledTransitionEffect from './StyledTransitionEffect'
 import StyledDescription from './StyledDescription'
 import StyledTextWrapper from './StyledTextWrapper'
 
-import StyledSectionImageWrapper from './StyledSectionImageWrapper'
+import StyledSectionImageWrapper from '../coffeeDetails/StyledSectionImageWrapper'
 import StyledSectionHeader, {StyledH2} from '../Introduction/StyledHeader'
 import StyledSectionContent from '../coffeeDetails/StyledSectionContent'
 import StyledOrderButton from '../coffeeDetails/StyledOrderButton'
-
-import FamilyProfile from '../FamilyProfile/FamilyProfile'
 
 import ReactGA from 'react-ga'
 
@@ -42,15 +39,17 @@ export default class FamilyOutline extends React.Component {
           <StyledSectionImageWrapper>
             <StyledDescription>
               <StyledFamilyImage src={this.state.image} />
-              <StyledTransitionEffect/>
+              <StyledTextWrapper>
+                <StyledSectionHeader>{this.state.name}</StyledSectionHeader>
+                <StyledH2>{this.state.description}</StyledH2>
+              </StyledTextWrapper>
             </StyledDescription>
-            <FamilyProfile {...this.state}/>
           </StyledSectionImageWrapper>
 
 
-          </StyledFamilyOutline>
-        )
-        // <StyledOrderButton onClick={() => this.order()}>Bestellen</StyledOrderButton>
+        <StyledOrderButton onClick={() => this.order()}>Bestellen</StyledOrderButton>
+      </StyledFamilyOutline>
+    )
   }
 
 }

@@ -2,21 +2,23 @@ import styled from 'styled-components';
 import { media } from './../../mediaStyles.js';
 
 
-const StyledDescription = styled.div`
+const FlexWrapper = styled.div`
   height: auto;
-  display: inline;
+  display: flex;
   width: 100%;
+  flex-direction: column;
+  
   ${media.desktop`
-
+    flex-direction: row;
   `};
 };
 `;
 
-StyledDescription.defaultProps = {
+FlexWrapper.defaultProps = {
   theme: {
     colors: {
     }
   },
 };
 
-export default StyledDescription;
+export default FlexWrapper;

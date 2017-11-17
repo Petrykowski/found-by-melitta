@@ -1,22 +1,23 @@
+
 import styled from 'styled-components';
 import { media } from './../../mediaStyles.js';
 
 
-const StyledDescription = styled.div`
+const StyledPin = styled.img`
   height: auto;
-  display: inline;
-  width: 100%;
+  padding: 0.5rem;
+  width: 1.3rem;
+  
   ${media.desktop`
-
   `};
 };
 `;
 
-StyledDescription.defaultProps = {
+StyledPin.defaultProps = {
   theme: {
     colors: {
     }
   },
 };
 
-export default StyledDescription;
+export default StyledPin;

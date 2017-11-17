@@ -5,7 +5,6 @@ import { media } from './../../mediaStyles.js';
 const StyledDescription = styled.div`
   height: auto;
   display: inline;
-  width: 100%;
   ${media.desktop`
 
   `};

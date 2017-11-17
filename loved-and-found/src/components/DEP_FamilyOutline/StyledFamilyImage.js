@@ -2,20 +2,21 @@ import styled from 'styled-components';
 import { media } from './../../mediaStyles.js';
 
 
-const StyledSectionHeader = styled.span`
+const StyledFamilyImage = styled.img`
   height: auto;
-  width: 50%;
+  max-width: 100%;
 
   ${media.desktop`
+    max-width: 90%;
   `};
 };
 `;
 
-StyledSectionHeader.defaultProps = {
+StyledFamilyImage.defaultProps = {
   theme: {
     colors: {
     }
   },
 };
 
-export default StyledSectionHeader;
+export default StyledFamilyImage;

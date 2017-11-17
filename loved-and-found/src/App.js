@@ -18,13 +18,16 @@ class App extends Component {
       theme:{
         colors: {
           primary: '#e2031a',
-          secondary: 'rgba(171, 171, 171, 0.55)'
+          // secondary: 'rgba(171, 171, 171, 0.55)'
+          secondary: '#c7a079b5',
+          third: 'rgb(234, 231, 222)',
+          fourth: '#c7a079'
         }
       },
       mapMoved: false,
       route: {
-        name: 'landing',
-        props: {}
+        name: 'start',
+        props: {id: 0}
       }
     }
   }

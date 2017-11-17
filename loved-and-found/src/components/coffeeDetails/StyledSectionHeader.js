@@ -8,12 +8,12 @@ const StyledSectionHeader = styled.div`
   font-size: 1.2rem;
   text-transform: uppercase;
   font-family: 'Spectral SC', serif;
-  font-weight: 300;
+  font-weight: bold;
   padding: 0.4rem 0;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  margin: 1rem 0;
-  text-align: center;
+  // border-top: 1px solid black;
+  // border-bottom: 1px solid black;
+  margin-top: 1rem;
+  // text-align: center;
 
   ${media.desktop`
   `};

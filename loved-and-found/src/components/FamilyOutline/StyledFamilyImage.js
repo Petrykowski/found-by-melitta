@@ -3,11 +3,12 @@ import { media } from './../../mediaStyles.js';
 
 
 const StyledFamilyImage = styled.img`
-  height: auto;
-  max-width: 100%;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
 
   ${media.desktop`
-    max-width: 90%;
+    width: 100%;
   `};
 };
 `;

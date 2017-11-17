@@ -6,7 +6,7 @@ const StyledHeader = styled.div`
   width: 100%;
   height: 3rem;
   display: inline-flex;
-  background-color: ${ (props) => props.theme.colors.secondary };
+  // background-color: ${ (props) => props.theme.colors.secondary };
 
   ${media.desktop`
 

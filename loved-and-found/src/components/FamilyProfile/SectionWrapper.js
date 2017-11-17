@@ -1,22 +1,23 @@
+
 import styled from 'styled-components';
 import { media } from './../../mediaStyles.js';
 
 
-const StyledDescription = styled.div`
+const SectionWrapper = styled.div`
   height: auto;
-  display: inline;
-  width: 100%;
+  text-align: center;
+  padding 0 2rem;
+  
   ${media.desktop`
-
   `};
 };
 `;
 
-StyledDescription.defaultProps = {
+SectionWrapper.defaultProps = {
   theme: {
     colors: {
     }
   },
 };
 
-export default StyledDescription;
+export default SectionWrapper;
