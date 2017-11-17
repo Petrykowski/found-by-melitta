@@ -45,6 +45,19 @@ export default class ContainedImage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if(nextProps.select) {
+      const initialCenter = Paper.view.center;
+      ReactGA.event({
+        category: 'User',
+        action: `selected location ${this.props.id}`
+      });
+      animateViewChange(new Point(this.state.x, this.state.y), 4, 150)
+        .then( () => {
+            Paper.view.center = initialCenter;
+            Paper.view.zoom = 1;
+            this.context.changeRoute(`country`, {id: this.props.id});
+          })
+    }
     this.setState({
       x: Paper.view.center.x + nextProps.offsetX,
       y: Paper.view.center.y + nextProps.offsetY,
@@ -59,17 +72,7 @@ export default class ContainedImage extends React.Component {
 
   onClick = (event) => {
     this.props.onClick()
-    const initialCenter = Paper.view.center;
-    ReactGA.event({
-      category: 'User',
-      action: `selected location ${this.props.id}`
-    });
-    animateViewChange(new Point(this.state.x, this.state.y), 4, 150)
-    .then( () => {
-        Paper.view.center = initialCenter;
-        Paper.view.zoom = 1;
-        this.context.changeRoute(`country`, {id: this.props.id});
-      })
+    
   }
 
   onMouseEnter = () => {

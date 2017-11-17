@@ -6,6 +6,7 @@ export default {
       image_: 'http://via.placeholder.com/600x900',
       country: 'Country',
       region: 'Von den Hängen des Blue Mountain Bergs',
+      description: 'Diese Region ist besonders bekannt für ihren vollmundigen und unverwechselbaren Geschmack',
       taste: 'Lorem Ipsum Dolor Sit Amet',
       families: [
         {
@@ -24,6 +25,7 @@ export default {
       image: '/coffee-bag.png',
       country: 'Country',
       region: 'Von den Hängen des Blue Mountain Bergs',
+      description: 'Diese Region ist besonders bekannt für ihren vollmundigen und unverwechselbaren Geschmack',
       taste: 'Lorem Ipsum Dolor Sit Amet',
       families: [
         {
@@ -42,6 +44,7 @@ export default {
       image: '/coffee-bag.png',
       country: 'Country',
       region: 'Von den Hängen des Blue Mountain Bergs',
+      description: 'Diese Region ist besonders bekannt für ihren vollmundigen und unverwechselbaren Geschmack',
       taste: 'Lorem Ipsum Dolor Sit Amet',
       families: [
         {
@@ -60,19 +63,22 @@ export default {
     {
       offsetX: -650,
       offsetY: 450,
-      active: true,
+      active: false,
+      show: true,
       id: 0,
     },
     {
       offsetX: 220,
       offsetY: 330,
-      active: false,
+      active: true,
+      show: true,
       id: 1,
     },
     {
       offsetX: 10,
       offsetY: 300,
       active: false,
+      show: true,
       id: 2,
     }
   ],

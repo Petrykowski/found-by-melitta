@@ -11,6 +11,8 @@ import {Image} from '../paper-react/components/Image'
 import ContainedImage from '../canvas/ContainedImage'
 import Marker from '../canvas/Marker'
 
+import Preview from '../Preview/Preview'
+
 import Paper, { Point, Tool, Rectangle } from 'paper';
 
 //assets
@@ -57,14 +59,27 @@ export default class WorldMap extends React.Component {
     })
   }
 
-  onMarkerClicked() {
+  onSelectLocation(id) {
+    let newMarkers = this.state.markers
+    newMarkers[id].select = true;
+    newMarkers[id].show = false;
     this.setState({
+      markers: newMarkers,
       opacity: 0
     })
   }
 
+  onMarkerClicked(index) {
+    let newMarkers = this.state.markers.map( (marker) => ({...marker, active: false, show: true}) )
+    newMarkers[index].active = true
+    newMarkers[index].show = !newMarkers[index].show
+    this.setState({
+      show: newMarkers
+    })
+  }
+
   onMarkerHovered(index) {
-    let newMarkers = this.state.markers.map( (marker) => ({...marker, active: false}) )
+    let newMarkers = this.state.markers.map( (marker) => ({...marker, active: false, show: true}) )
     newMarkers[index].active = true
     this.setState({
       markers: newMarkers
@@ -75,6 +90,7 @@ export default class WorldMap extends React.Component {
     return (
       <StyledMapWrapper opacity={this.state.opacity}>
         <StyledCanvasMap id="map" data-paper-resize="true"/>
+        <Preview marker={this.state.markers.filter( (m) => m.active)} showMore={(index) => this.onSelectLocation(index) } />
         <PaperScope 
           canvasId='map'>
           <ContainedImage 
@@ -84,7 +100,12 @@ export default class WorldMap extends React.Component {
           />
           {
             this.state.markers.map( (markerProps, index) => {
-              return <Marker key={index} {...markerProps} onHover={() => this.onMarkerHovered(index)} onClick={ () => this.onMarkerClicked(index)}/>
+              return <Marker 
+                key={index} 
+                {...markerProps} 
+                onHover={() => this.onMarkerHovered(index)} 
+                onClick={ () => this.onMarkerClicked(index)} 
+                />
             })
           }
         </PaperScope> 
