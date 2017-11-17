@@ -80,6 +80,20 @@ export default {
       active: false,
       show: true,
       id: 2,
+    },
+    {
+      offsetX: 950,
+      offsetY: 580,
+      active: false,
+      show: true,
+      id: 2,
+    },
+    {
+      offsetX: 700,
+      offsetY: 50,
+      active: false,
+      show: true,
+      id: 2,
     }
   ],
   logging: {

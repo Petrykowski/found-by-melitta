@@ -27,6 +27,7 @@ class LandingScreen extends Component {
     return (
       <div>
         <Header/>
+        <div style={{position:"absolute", height: "auto", top: 0, 'zIndex': 100}} id='modal'></div>
         <Introduction show={!this.state.mapMoved}/>
         <Map isMoving={this.mapMoves}/>
         {/* <CountryButtons/> */}

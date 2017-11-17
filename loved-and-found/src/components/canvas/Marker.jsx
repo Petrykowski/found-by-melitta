@@ -51,7 +51,7 @@ export default class ContainedImage extends React.Component {
         category: 'User',
         action: `selected location ${this.props.id}`
       });
-      animateViewChange(new Point(this.state.x, this.state.y), 4, 150)
+      animateViewChange(new Point(this.state.x, this.state.y), 4, 70)
         .then( () => {
             Paper.view.center = initialCenter;
             Paper.view.zoom = 1;

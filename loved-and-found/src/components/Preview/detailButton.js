@@ -7,6 +7,7 @@ const StyledOrderButton = styled.div`
   background-color: #9a5d25;
   color: white;
   padding: 0.5rem 1rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1rem;
   text-align: center;
   pointer-events: all;

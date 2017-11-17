@@ -4,6 +4,7 @@ import StyledMap from './StyledMap'
 import StyledCanvasMap from './StyledCanvasMap'
 import StyledMapWrapper from './StyledMapWrapper'
 
+import ReactDOM from 'react-dom'
 // import Marker from '../Marker/StyledMarker';
 
 import {PaperScope} from '../paper-react/components/PaperScope'
@@ -24,7 +25,8 @@ export default class WorldMap extends React.Component {
     super(props)
     this.state = {
       markers: [],
-      opacity: 0
+      opacity: 0,
+      loaded: false
     }
   }
 
@@ -54,6 +56,7 @@ export default class WorldMap extends React.Component {
           ...marker,
           offsetX: marker.offsetX * scaleFactor,
           offsetY: marker.offsetY * scaleFactor,
+          loaded: true,
         }
       })
     })
@@ -70,9 +73,12 @@ export default class WorldMap extends React.Component {
   }
 
   onMarkerClicked(index) {
-    let newMarkers = this.state.markers.map( (marker) => ({...marker, active: false, show: true}) )
-    newMarkers[index].active = true
+    let newMarkers = this.state.markers.map( (marker) => ({...marker, active: false}) )
+    console.log(newMarkers[index])
     newMarkers[index].show = !newMarkers[index].show
+
+    newMarkers[index].active = true
+    console.log(newMarkers[index])
     this.setState({
       show: newMarkers
     })
@@ -90,7 +96,13 @@ export default class WorldMap extends React.Component {
     return (
       <StyledMapWrapper opacity={this.state.opacity}>
         <StyledCanvasMap id="map" data-paper-resize="true"/>
-        <Preview marker={this.state.markers.filter( (m) => m.active)} showMore={(index) => this.onSelectLocation(index) } />
+        {
+          this.state.markers.length > 0 ?
+          ReactDOM.createPortal(
+            (<Preview marker={this.state.markers.filter( (m) => m.active)} showMore={(index) => this.onSelectLocation(index) } />),
+            document.getElementById('modal'),
+          ) : null
+        }
         <PaperScope 
           canvasId='map'>
           <ContainedImage 
