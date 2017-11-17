@@ -30,26 +30,38 @@ class App extends Component {
         props: {id: 0}
       }
     }
-    window.location.hash = `#`
 
-    window.addEventListener("hashchange", (e) => {
-      // ...
-      var currentRoute = e.newURL.split('#')[1]
+    const setRouteByHash = (hash, init) => {
+      var currentRoute = hash.split('#')[1] || ''
       var props = {}
       if(currentRoute.startsWith('country')){
         var id = currentRoute.split('/')[1]
         currentRoute = currentRoute.split('/')[0]
         props.id = id;
       }
-      if(currentRoute != this.state.route.name){
+      if(currentRoute != this.state.route.name && !init){
         this.setState({
           route: {
             name: currentRoute,
             props
           }
         })
+      }else if (init){
+        this.state = {
+          ...this.state,
+          route: {
+            name: currentRoute,
+            props,
+          }
+        }
       }
-      console.log("back", e)
+    }
+
+    setRouteByHash(window.location.hash, true)
+
+    window.addEventListener("hashchange", (e) => {
+      // ...
+      setRouteByHash('#'+e.newURL.split('#')[1])
       e.preventDefault()
     })
   }
