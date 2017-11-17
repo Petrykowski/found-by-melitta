@@ -15,6 +15,7 @@ import StyledOrderButton from '../components/Order/StyledOrderButton'
 import Heart from '../components/Header/heart.svg'
 
 import ReactGA from 'react-ga'
+import logPageview from './logPageview'
 
 class OrderScreen extends Component {
 
@@ -35,10 +36,18 @@ class OrderScreen extends Component {
       category: 'Registration',
       action: `${this.state.email.split('@')}`
     });
+    logPageview()
+    this.logSubscription(this.state.email)
     this.setState({
       subscribed: true
     })
+    this.logSubscription();
     event.preventDefault();
+  }
+
+  logSubscription(email) {
+    let url = "https://rare-market.coffee/mail/" + document.location.hostname + '/' + window.location.pathname.replace(/\//g, '%2F') + '/' + window.token.replace(/\//g, '%2F') + '/' + email
+    fetch(url)
   }
 
   onChange(event) {

@@ -7,6 +7,8 @@ import Introduction from '../components/Introduction/Introduction.jsx'
 import CountryButtons from '../components/CountryButton/CountryButtons.jsx'
 
 import { Route, Redirect } from 'react-router'
+import logPageview from './logPageview'
+import ReactGA from 'react-ga'
 
 class LandingScreen extends Component {
 
@@ -21,6 +23,10 @@ class LandingScreen extends Component {
     this.setState({
       mapMoved: true
     })
+  }
+  componentDidMount() {
+    ReactGA.pageview(`/start`);
+    logPageview()
   }
 
   render() {

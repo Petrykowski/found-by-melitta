@@ -8,6 +8,7 @@ import Header from '../components/Header/Header.jsx'
 
 import config from '../config.js'
 import ReactGA from 'react-ga';
+import logPageview from './logPageview'
 
 class CountryScreen extends Component {
 
@@ -20,6 +21,7 @@ class CountryScreen extends Component {
 
   componentDidMount() {
     ReactGA.pageview(`/country/${this.countryId}`);
+    logPageview()
   }
 
   render() {
