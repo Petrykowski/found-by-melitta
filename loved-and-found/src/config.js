@@ -22,7 +22,6 @@ export default {
     {
       name: 'Coffee Name 1',
       image: '/coffee-bag.png',
-      image: 'http://via.placeholder.com/600x900',
       country: 'Country',
       region: 'Von den Hängen des Blue Mountain Bergs',
       taste: 'Lorem Ipsum Dolor Sit Amet',
@@ -41,7 +40,6 @@ export default {
     {
       name: 'Coffee Name 2',
       image: '/coffee-bag.png',
-      image: 'http://via.placeholder.com/600x900',
       country: 'Country',
       region: 'Von den Hängen des Blue Mountain Bergs',
       taste: 'Lorem Ipsum Dolor Sit Amet',

@@ -31,7 +31,7 @@ export default class CoffeeDetails extends React.Component {
   render() {
     return (
       <StyledDetails>
-        <h1 style={{ 'text-align': 'center', 'font-family': 'Spectral SC, serif' }}>{this.props.name}</h1>
+        <h1 style={{ 'textAlign': 'center', 'fontFamily': 'Spectral SC, serif' }}>{this.props.name}</h1>
         <FlexWrapper>
           <FlexItem>
             <StyledSectionImageWrapper>
@@ -52,7 +52,7 @@ export default class CoffeeDetails extends React.Component {
             </CenterVertically>
           </FlexItem>
         </FlexWrapper>
-        <div style={{width: '100%', height: '3rem', 'text-align': 'center'}}>
+        <div style={{width: '100%', height: '3rem', 'textAlign': 'center'}}>
         <StyledOrderButton onClick={() => this.order(true)} desktopOnly={true}>Bestellen</StyledOrderButton>
         </div>
       </StyledDetails>

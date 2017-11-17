@@ -77,9 +77,11 @@ export default class ContainedImage extends React.Component {
       scaleFactor: ACTIVE_SCALE
     })
     this.props.onHover();
+    document.getElementsByTagName('canvas')[0].style.cursor ='pointer';
   }
 
   onMouseLeave = () => {
+    document.getElementsByTagName('canvas')[0].style.cursor ='default';
   }
 
   render() {

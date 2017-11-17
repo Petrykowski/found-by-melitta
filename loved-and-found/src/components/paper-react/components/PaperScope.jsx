@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { enableScope, disableScope, bindCanvasToScope } from '../scopeHandler';
 import Paper from 'paper';
 
+let enabled = false;
+
 export class PaperScope extends React.Component {
 
   constructor(props) {
@@ -18,7 +20,10 @@ export class PaperScope extends React.Component {
     const canvasDomNode = ReactDOM.findDOMNode(document.getElementById(this.props.canvasId));
     [this.scopeId, this.scope] = bindCanvasToScope(this.scopeId, canvasDomNode);
 
-    enableScope(this.scopeId);
+    if(!enabled){
+      enableScope(this.scopeId);
+      enabled = true;
+    }
 
     if (this.props.onPaperScopeReady) {
       this.props.onPaperScopeReady(this.paperProject);
@@ -27,7 +32,7 @@ export class PaperScope extends React.Component {
   }
 
   componentWillUnmount() {
-    disableScope(this.scopeId);
+    // disableScope(this.scopeId);
   }
 
   // The canvas object is not allowed to be a child of the paperscope

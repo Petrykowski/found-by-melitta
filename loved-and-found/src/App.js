@@ -30,6 +30,28 @@ class App extends Component {
         props: {id: 0}
       }
     }
+    window.location.hash = `#`
+
+    window.addEventListener("hashchange", (e) => {
+      // ...
+      var currentRoute = e.newURL.split('#')[1]
+      var props = {}
+      if(currentRoute.startsWith('country')){
+        var id = currentRoute.split('/')[1]
+        currentRoute = currentRoute.split('/')[0]
+        props.id = id;
+      }
+      if(currentRoute != this.state.route.name){
+        this.setState({
+          route: {
+            name: currentRoute,
+            props
+          }
+        })
+      }
+      console.log("back", e)
+      e.preventDefault()
+    })
   }
 
   mapMoves = () => {
@@ -39,12 +61,17 @@ class App extends Component {
   }
 
   changeRoute(newRoute, props={}) {
+    console.log(props)
+    if(typeof props.id !== 'undefined'){
+      newRoute = newRoute + '/' + props.id;
+    }
     this.setState({
       route: {
         name: newRoute,
         props,
       }
     })
+    window.location.hash = `#${newRoute}`
   }
 
   getChildContext() {
