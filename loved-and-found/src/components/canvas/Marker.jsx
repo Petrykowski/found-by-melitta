@@ -88,16 +88,18 @@ export default class ContainedImage extends React.Component {
   }
 
   render() {
+    // src={Marker} 
     return (
       <div>
       <Image 
-        src={Marker} 
         onLoad={this.onLoad}
+        src="/farmer_small.png"
         scaleFactor={this.state.scaleFactor}
         rotation={this.state.rotation}
         onClick={this.onClick}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        height={20}
         x={this.state.x} y={this.state.y}/>
       </div>);
   }

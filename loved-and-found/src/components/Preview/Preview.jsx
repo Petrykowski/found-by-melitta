@@ -42,6 +42,7 @@ export default class Preview extends React.Component {
   }
 
   render() {
+    // <img src="/farmer_small.png" style={{color: 'white'}}/>
     return this.state.coffee ? (
       <StyledPreview className='preview' x={this.state.x} y={this.state.y} show={this.state.show}>
         <TopSection>

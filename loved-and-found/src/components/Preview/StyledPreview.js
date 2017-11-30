@@ -9,7 +9,7 @@ const StyledPreview = styled.div`
   background-color: white;
   display: ${props => !props.show ? 'none' : 'initial'};
   position: absolute;
-  top: ${props => props.y}px;
+  top: ${props => props.y-10}px;
   left: ${props => props.x}px;
   border-radius: 0.5rem;
   border: 0.3rem solid #9a5d25;
